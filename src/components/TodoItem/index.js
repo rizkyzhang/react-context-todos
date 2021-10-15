@@ -10,7 +10,7 @@ const TodoItem = ({ todo }) => {
     <Flex
       align="center"
       p={3}
-      bg={todo.isCompleted ? "green.100" : "gray.100"}
+      bg={todo.isCompleted ? "green.200" : "gray.200"}
       borderRadius="lg"
     >
       <Text textDecoration={todo.isCompleted && "line-through"}>
