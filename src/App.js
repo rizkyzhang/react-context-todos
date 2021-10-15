@@ -14,12 +14,13 @@ const App = () => {
         display="flex"
         alignItems="center"
         justifyContent="center"
+        p={5}
         fontFamily="Nunito"
         color="blackAlpha.700"
       >
         <Box w="xl" p={10} shadow="dark-lg" borderRadius="lg">
           <TodoInput />
-          <Divider mb={5}></Divider>
+          <Divider h={0.5} mb={5} bg="gray.300"></Divider>
           <TodoList />
         </Box>
       </Container>
