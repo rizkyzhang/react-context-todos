@@ -1,18 +1,32 @@
-import { ADD_TODO, TOGGLE_TODO, DELETE_TODO } from "./AppActions";
+import React from "react";
+import { ActionType } from "./AppActions";
 
-const reducer = (todos, action) => {
+export interface IAction {
+  type: ActionType;
+  id: number;
+  text?: string;
+}
+
+export interface ITodos {
+  id?: number;
+  text?: string;
+  isCompleted?: boolean;
+}
+
+const reducer: React.Reducer<ITodos[], IAction> = (todos, action) => {
   switch (action.type) {
-    case ADD_TODO:
+    case ActionType.ADD_TODO:
       return [
         ...todos,
         {
           id: action.id,
           text: action.text,
+          isCompleted: false,
         },
       ];
-    case DELETE_TODO:
+    case ActionType.DELETE_TODO:
       return todos.filter((todo) => todo.id !== action.id);
-    case TOGGLE_TODO:
+    case ActionType.TOGGLE_TODO:
       return todos.map((todo) => {
         if (todo.id === action.id) {
           return {

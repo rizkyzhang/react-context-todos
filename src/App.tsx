@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Container, Divider } from "@chakra-ui/react";
 
 import { AppState } from "./context/AppState";

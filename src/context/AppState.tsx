@@ -2,9 +2,9 @@ import React, { useContext, useMemo, useReducer } from "react";
 import { createContext } from "react";
 import reducer from "./AppReducer";
 
-const AppContext = createContext();
+const AppContext = createContext<any>(null);
 
-const AppState = ({ children }) => {
+const AppState: React.FC<React.ReactNode> = ({ children }): JSX.Element => {
   const [todos, dispatch] = useReducer(reducer, []);
 
   const contextValue = useMemo(() => {
