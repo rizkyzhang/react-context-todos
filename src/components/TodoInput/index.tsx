@@ -3,14 +3,14 @@ import { Button, Heading, Input, Stack } from "@chakra-ui/react";
 
 import { useAppContext } from "../../context/AppState";
 
-const TodoInput = () => {
-  const [input, setInput] = useState("");
-  const [id, setId] = useState(0);
+const TodoInput: React.FC = (): JSX.Element => {
+  const [input, setInput] = useState<string>("");
+  const [id, setId] = useState<number>(0);
   const { dispatch } = useAppContext();
 
-  const handleAddTodo = (e) => {
+  const handleAddTodo = (): void => {
     setInput("");
-    dispatch({ type: "ADD_TODO", id, text: input, createdAt: new Date() });
+    dispatch({ type: "ADD_TODO", id, text: input });
     setId(id + 1);
   };
 
@@ -22,7 +22,7 @@ const TodoInput = () => {
       <Input
         onChange={(e) => setInput(e.target.value)}
         onKeyDown={(e) =>
-          e.key === "Enter" && input.trim().length > 0 && handleAddTodo(e)
+          e.key === "Enter" && input.trim().length > 0 && handleAddTodo()
         }
         value={input}
         placeholder="Enter a new todo"
@@ -31,7 +31,7 @@ const TodoInput = () => {
         borderColor="gray.200"
       ></Input>
       <Button
-        onClick={(e) => input.trim().length > 0 && handleAddTodo(e)}
+        onClick={(e) => input.trim().length > 0 && handleAddTodo()}
         bg="blue.300"
         color="white"
         _hover={{

@@ -3,7 +3,13 @@ import { useAppContext } from "../../context/AppState";
 import { Checkbox, Flex, Spacer, Text } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 
-const TodoItem = ({ todo }) => {
+import { ITodo } from "../TodoList";
+
+interface IProps {
+  todo: ITodo;
+}
+
+const TodoItem: React.FC<IProps> = ({ todo }): JSX.Element => {
   const { dispatch } = useAppContext();
 
   return (
@@ -13,7 +19,7 @@ const TodoItem = ({ todo }) => {
       bg={todo.isCompleted ? "green.200" : "gray.200"}
       borderRadius="lg"
     >
-      <Text textDecoration={todo.isCompleted && "line-through"}>
+      <Text textDecoration={todo.isCompleted ? "line-through" : ""}>
         {todo.text}
       </Text>
       <Spacer></Spacer>
